@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://cards/Card.gd" type="Script" id=1]
 [ext_resource path="res://cards/card.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 
 resource_name = "attack_left"
 length = 0.55
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ 0.0, -58.3, -54.7, -23.3 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
 resource_name = "attack_right"
 length = 0.55
@@ -65,9 +65,8 @@ tracks/1/keys = {
 "values": [ 0.0, 58.3428, 54.6654, 23.3362 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource_name = "base"
 length = 1.0
 loop = false
 step = 0.1
@@ -95,41 +94,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 
 resource_name = "return_left"
-length = 0.3
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"update": 0,
-"values": [ Vector2( 246, 8.00183 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.25, 1 ),
-"update": 0,
-"values": [ -23.3692, 0.0 ]
-}
-
-[sub_resource type="Animation" id=7]
-
-resource_name = "return_right"
 length = 0.3
 loop = false
 step = 0.05
@@ -158,9 +138,39 @@ tracks/1/keys = {
 "values": [ 23.4, 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource_name = "take_damage"
+resource_name = "return_right"
+length = 0.3
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 246, 8.00183 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ -23.3692, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+
 length = 0.5
 loop = false
 step = 0.05
@@ -176,13 +186,56 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.5 ),
+"transitions": PoolRealArray( 1, 0.25, 1 ),
+"update": 0,
+"values": [ 0.0, 15.8072, 0.0 ]
+}
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=7]
+
+resource_name = "take_damage_right"
+length = 0.5
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.25, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.8, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 140.5, 204.5 )
 
-[node name="Card" type="Area2D"]
+[node name="Card" type="Area2D" index="0"]
 
 position = Vector2( 486, 272 )
 input_pickable = true
@@ -194,6 +247,9 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 max_health = 10
+base_damage = 1
+max_damage = 3
+facing_dir = "right"
 color = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
@@ -203,18 +259,19 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack_left = SubResource( 6 )
-anims/attack_right = SubResource( 4 )
-anims/base = SubResource( 2 )
+anims/attack_left = SubResource( 1 )
+anims/attack_right = SubResource( 2 )
+anims/base = SubResource( 3 )
 anims/return_left = SubResource( 5 )
-anims/return_right = SubResource( 7 )
-anims/take_damage = SubResource( 3 )
+anims/return_right = SubResource( 4 )
+anims/take_damage_left = SubResource( 6 )
+anims/take_damage_right = SubResource( 7 )
 blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 visible = false
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="healthbar" type="ProgressBar" parent="." index="2"]
 
@@ -241,7 +298,32 @@ exp_edit = false
 rounded = false
 percent_visible = false
 
-[node name="Sprite" type="Sprite" parent="." index="3"]
+[node name="damagebar" type="ProgressBar" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -75.0
+margin_top = -278.0
+margin_right = 72.0
+margin_bottom = -254.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 3.0
+step = 1.0
+page = 0.0
+value = 1.0
+exp_edit = false
+rounded = false
+percent_visible = false
+
+[node name="Sprite" type="Sprite" parent="." index="4"]
 
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Transform", "Visibility" ]

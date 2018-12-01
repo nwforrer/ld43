@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://cards/Card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sacrifice/vial.png" type="Texture" id=4]
 
 [node name="Game" type="Node"]
 
@@ -25,14 +26,15 @@ margin_right = 7.0
 
 [node name="PlayerCard" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 238.412, 267.919 )
-_sections_unfolded = [ "Visibility" ]
+position = Vector2( 230.25, 342.74 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 color = Color( 0.00195312, 0.00973511, 0.5, 1 )
 
 [node name="EnemyCard" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 843.778, 267.919 )
+position = Vector2( 845.138, 341.379 )
 _sections_unfolded = [ "Visibility" ]
+facing_dir = "left"
 color = Color( 0.488281, 0, 0, 1 )
 
 [node name="EnemyAttackDelayTimer" type="Timer" parent="." index="3"]
@@ -42,9 +44,25 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
+[node name="PlayerAttackDelayTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="vial" type="Sprite" parent="." index="5"]
+
+position = Vector2( 535.736, 382.086 )
+texture = ExtResource( 4 )
+
 [connection signal="attack" from="CanvasLayer/GUI" to="." method="_on_GUI_attack"]
 
+[connection signal="blood_sacrifice" from="CanvasLayer/GUI" to="." method="_on_GUI_blood_sacrifice"]
+
 [connection signal="attack_complete" from="PlayerCard" to="." method="_on_PlayerCard_attack_complete"]
+
+[connection signal="damage_changed" from="PlayerCard" to="." method="_on_PlayerCard_damage_changed"]
 
 [connection signal="return_complete" from="PlayerCard" to="." method="_on_PlayerCard_return_complete"]
 
@@ -53,5 +71,7 @@ autostart = false
 [connection signal="return_complete" from="EnemyCard" to="." method="_on_EnemyCard_return_complete"]
 
 [connection signal="timeout" from="EnemyAttackDelayTimer" to="." method="_on_EnemyAttackDelayTimer_timeout"]
+
+[connection signal="timeout" from="PlayerAttackDelayTimer" to="." method="_on_PlayerAttackDelayTimer_timeout"]
 
 
